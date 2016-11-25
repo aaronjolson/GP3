@@ -51,7 +51,11 @@ public class Timer implements Observer {
 
 	@Override
 	public void update(Observable clock, Object value) {
-		if (--timeValue == 0) {
+		timeValue += 5;
+    if (timeValue >= 50){
+      timeValue = 50;
+    }
+    if (timeValue == 0) {
 			TimerRanOutManager.instance().processEvent(new TimerRanOutEvent(instance));
 		} else {
 			TimerTickedManager.instance().processEvent(new TimerTickedEvent(instance));
