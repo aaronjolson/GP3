@@ -24,6 +24,7 @@ import java.util.Observer;
 public class Timer implements Observer {
 	private static Timer instance;
 	private int timeValue;
+  private boolean accelerating;
 
 	private Timer() {
 		instance = this;
@@ -49,11 +50,26 @@ public class Timer implements Observer {
 		return timeValue;
 	}
 
+	public void setAccelerating(boolean state) {
+    this.accelerating = state;
+  }
+
+  public boolean getAccelerating() {
+    return accelerating;
+  }
+
 	@Override
 	public void update(Observable clock, Object value) {
-		timeValue += 5;
-    if (timeValue >= 50){
+    if (getAccelerating()) {
+      timeValue += 5;
+    } else {
+      timeValue -= 5;
+    }
+    if (timeValue >= 50) {
       timeValue = 50;
+    }
+    if (timeValue <= 0) {
+      timeValue = 0;
     }
     if (timeValue == 0) {
 			TimerRanOutManager.instance().processEvent(new TimerRanOutEvent(instance));

@@ -59,7 +59,7 @@ public class AcceleratingState extends VehicleState
 	 * Process Accelerate request
 	 */
 	public void accelerateRequested(AccelerateRequestEvent event) {
-		Timer.instance().addTimeValue(10);
+//		Timer.instance().addTimeValue(0);
 		display.displayTimeRemaining(Timer.instance().getTimeValue());
 	}
 
@@ -96,7 +96,8 @@ public class AcceleratingState extends VehicleState
 		TimerRanOutManager.instance().addTimerRanOutListener(this);
 		TimerTickedManager.instance().addTimerTickedListener(this);
 		display.turnLightOn();
-		Timer.instance().setTimeValue(10);
+		Timer.instance().setTimeValue(0);
+    Timer.instance().setAccelerating(true);
 		display.startAccelerating();
 		display.displayTimeRemaining(Timer.instance().getTimeValue());
 	}
