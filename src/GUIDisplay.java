@@ -50,7 +50,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
     private BrakeButton brakeButton = new BrakeButton("brake");
 		private JLabel doorStatus = new JLabel("drive vehicle");
-		private JLabel timerValue = new JLabel("            ");
+		private JLabel timerValue = new JLabel("                                        ");
 		private JLabel lightStatus = new JLabel("Light Off");
 		private JLabel acceleratingStatus = new JLabel("Not accelerating");
 
@@ -59,15 +59,15 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		 */
 		private SimpleDisplay() {
 			super("Vehicle");
-			getContentPane().setLayout(new FlowLayout());
+			getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
 			getContentPane().add(doorStatus);
 			getContentPane().add(lightStatus);
 			getContentPane().add(timerValue);
 			getContentPane().add(acceleratingStatus);
 			getContentPane().add(vehicleDriver);
 			getContentPane().add(parkGear);
-			getContentPane().add(accelerateButton);
       getContentPane().add(brakeButton);
+			getContentPane().add(accelerateButton);
 			vehicleDriver.addActionListener(GUIDisplay.this);
 			parkGear.addActionListener(GUIDisplay.this);
 			accelerateButton.addActionListener(GUIDisplay.this);
