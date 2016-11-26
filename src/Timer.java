@@ -61,8 +61,10 @@ public class Timer implements Observer {
 	@Override
 	public void update(Observable clock, Object value) {
     if (getAccelerating()) {
+      System.out.println("accelerating");
       timeValue += 5;
     } else {
+      System.out.println("decelerating");
       timeValue -= 5;
     }
     if (timeValue >= 50) {

@@ -74,10 +74,10 @@ public class BrakingState extends VehicleState
     BrakeRequestManager.instance().addBrakeRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
-    display.turnLightOn();
-    Timer.instance().setTimeValue(0);
+//    display.turnLightOn();
+//    Timer.instance().setTimeValue(0);
+    display.notAccelerating();
     Timer.instance().setAccelerating(false);
-//    display.startBraking();
     display.displayTimeRemaining(Timer.instance().getTimeValue());
   }
 }
