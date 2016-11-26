@@ -45,6 +45,8 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 *
 	 */
 	private class SimpleDisplay extends JFrame {
+    private OffButton offButton = new OffButton("off");
+    private OnButton onButton = new OnButton("on");
 		private DriveVehicleButton vehicleDriver = new DriveVehicleButton("drive vehicle");
 		private VehicleParkButton parkGear = new VehicleParkButton("park vehicle");
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
@@ -60,10 +62,12 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		private SimpleDisplay() {
 			super("Vehicle");
 			getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
-			getContentPane().add(doorStatus);
+      getContentPane().add(doorStatus);
 			getContentPane().add(lightStatus);
 			getContentPane().add(timerValue);
 			getContentPane().add(acceleratingStatus);
+      getContentPane().add(offButton);
+      getContentPane().add(onButton);
 			getContentPane().add(vehicleDriver);
 			getContentPane().add(parkGear);
       getContentPane().add(brakeButton);

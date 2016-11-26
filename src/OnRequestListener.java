@@ -1,5 +1,16 @@
+import java.util.EventListener;
+
 /**
- * Created by agosto on 11/26/16.
+ * Any class may be an OnRequestListener to process on requests
+ *
+ * @author Aaron Olson
+ *
  */
-public class OnRequestListener {
+public interface OnRequestListener extends EventListener {
+  /**
+   * Processes on requests
+   *
+   * @param event
+   */
+  public void onRequested(OnRequestEvent event);
 }
