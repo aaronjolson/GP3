@@ -3,7 +3,7 @@
  *
  */
 public class OnState extends VehicleState
-    implements OnRequestListener, TimerRanOutListener, TimerTickedListener, VehicleParkListener {
+    implements OnRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
   private static OnState instance;
 
   /**
@@ -46,8 +46,8 @@ public class OnState extends VehicleState
   /**
    * Process door open request
    */
-  public void vehicleParked(VehicleParkEvent event) {
-    context.changeCurrentState(VehicleParkState.instance());
+  public void vehicleParked(ParkEvent event) {
+    context.changeCurrentState(ParkState.instance());
   }
 
   /**
@@ -71,7 +71,7 @@ public class OnState extends VehicleState
    *
    */
   public void run() {
-    VehicleParkManager.instance().addVehicleParkListener(this);
+    ParkManager.instance().addVehicleParkListener(this);
     OnRequestManager.instance().addOnRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);

@@ -23,7 +23,7 @@
  *
  */
 public class AcceleratingState extends VehicleState
-		implements AccelerateRequestListener, TimerRanOutListener, TimerTickedListener, VehicleParkListener {
+		implements AccelerateRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
 	private static AcceleratingState instance;
 
 	/**
@@ -66,8 +66,8 @@ public class AcceleratingState extends VehicleState
 	/**
 	 * Process door open request
 	 */
-	public void vehicleParked(VehicleParkEvent event) {
-		context.changeCurrentState(VehicleParkState.instance());
+	public void vehicleParked(ParkEvent event) {
+		context.changeCurrentState(ParkState.instance());
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class AcceleratingState extends VehicleState
 	 * 
 	 */
 	public void run() {
-    VehicleParkManager.instance().addVehicleParkListener(this);
+    ParkManager.instance().addVehicleParkListener(this);
     AccelerateRequestManager.instance().addAccelerateRequestListener(this);
 		TimerRanOutManager.instance().addTimerRanOutListener(this);
 		TimerTickedManager.instance().addTimerTickedListener(this);

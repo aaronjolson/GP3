@@ -22,7 +22,7 @@
  * Represents the drive vehicle state
  *
  */
-public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, VehicleParkListener {
+public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, ParkListener {
 	private static DriveState instance;
 
 	private DriveState() {
@@ -31,7 +31,7 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 
 	public void leave() {
     AccelerateRequestManager.instance().removeAccelerateRequestListener(instance);
-    VehicleParkManager.instance().removeVehicleParkListener(instance);
+    ParkManager.instance().removeVehicleParkListener(instance);
 	}
 
 	/**
@@ -52,8 +52,8 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 	 */
 
 	@Override
-	public void vehicleParked(VehicleParkEvent event) {
-		context.changeCurrentState(VehicleParkState.instance());
+	public void vehicleParked(ParkEvent event) {
+		context.changeCurrentState(ParkState.instance());
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 	public void run() {
     AccelerateRequestManager.instance().addAccelerateRequestListener(instance);
     BrakeRequestManager.instance().addBrakeRequestListener(instance);
-    VehicleParkManager.instance().addVehicleParkListener(instance);
+    ParkManager.instance().addVehicleParkListener(instance);
 		display.vehicleDrived();
 		display.turnLightOff();
 		display.notAccelerating();

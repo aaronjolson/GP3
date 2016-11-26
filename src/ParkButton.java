@@ -1,4 +1,3 @@
-
 /**
  * 
  * @author Brahma Dathan and Sarnath Ramnath
@@ -18,10 +17,25 @@
  * The authors do not make any claims regarding the correctness of the code in this module
  * and are not responsible for any loss or damage resulting from its use.  
  */
-import java.util.EventObject;
+/**
+ * The button that represents park
+ *
+ */
+public class ParkButton extends GUIButton {
+	/**
+	 * Create the button with the proper display
+	 * 
+	 * @param string the text to be put on the button
+	 */
+	public ParkButton(String string) {
+		super(string);
+	}
 
-public class VehicleParkEvent extends EventObject {
-	public VehicleParkEvent(Object source) {
-		super(source);
+	/**
+	 * Create the ParkEvent and tell the manager that the button has been
+	 * clicked.
+	 */
+	public void inform(VehicleDisplay source) {
+    ParkManager.instance().processEvent(new ParkEvent(source));
 	}
 }

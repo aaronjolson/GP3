@@ -3,7 +3,7 @@
  *
  */
 public class BrakingState extends VehicleState
-    implements BrakeRequestListener, TimerRanOutListener, TimerTickedListener, VehicleParkListener {
+    implements BrakeRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
   private static BrakingState instance;
 
   /**
@@ -45,8 +45,8 @@ public class BrakingState extends VehicleState
   /**
    * Process door open request
    */
-  public void vehicleParked(VehicleParkEvent event) {
-    context.changeCurrentState(VehicleParkState.instance());
+  public void vehicleParked(ParkEvent event) {
+    context.changeCurrentState(ParkState.instance());
   }
 
   /**
@@ -70,7 +70,7 @@ public class BrakingState extends VehicleState
    *
    */
   public void run() {
-    VehicleParkManager.instance().addVehicleParkListener(this);
+    ParkManager.instance().addVehicleParkListener(this);
     BrakeRequestManager.instance().addBrakeRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);

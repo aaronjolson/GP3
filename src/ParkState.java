@@ -22,10 +22,10 @@
  * Represents the door opened state
  *
  */
-public class VehicleParkState extends VehicleState implements DriveListener {
-	private static VehicleParkState instance;
+public class ParkState extends VehicleState implements DriveListener {
+	private static ParkState instance;
 
-	private VehicleParkState() {
+	private ParkState() {
 		instance = this;
 	}
 
@@ -38,9 +38,9 @@ public class VehicleParkState extends VehicleState implements DriveListener {
 	 * 
 	 * @return the object
 	 */
-	public static VehicleParkState instance() {
+	public static ParkState instance() {
 		if (instance == null) {
-			instance = new VehicleParkState();
+			instance = new ParkState();
 		}
 		return instance;
 	}

@@ -18,8 +18,10 @@
  * The authors do not make any claims regarding the correctness of the code in this module
  * and are not responsible for any loss or damage resulting from its use.  
  */
-import java.util.EventListener;
+import java.util.EventObject;
 
-public interface VehicleParkListener extends EventListener {
-	public void vehicleParked(VehicleParkEvent event);
+public class ParkEvent extends EventObject {
+	public ParkEvent(Object source) {
+		super(source);
+	}
 }
