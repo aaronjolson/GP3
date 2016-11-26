@@ -22,10 +22,10 @@
  * Represents the drive vehicle state
  *
  */
-public class DriveVehicleState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, VehicleParkListener {
-	private static DriveVehicleState instance;
+public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, VehicleParkListener {
+	private static DriveState instance;
 
-	private DriveVehicleState() {
+	private DriveState() {
 		instance = this;
 	}
 
@@ -39,9 +39,9 @@ public class DriveVehicleState extends VehicleState implements AccelerateRequest
 	 * 
 	 * @return this object
 	 */
-	public static DriveVehicleState instance() {
+	public static DriveState instance() {
 		if (instance == null) {
-			instance = new DriveVehicleState();
+			instance = new DriveState();
 		}
 		return instance;
 	}

@@ -22,32 +22,32 @@ import java.util.EventListener;
 
 import javax.swing.event.EventListenerList;
 
-public class DriveVehicleManager {
+public class DriveManager {
 	private EventListenerList listenerList = new EventListenerList();
-	private static DriveVehicleManager instance;
+	private static DriveManager instance;
 
-	private DriveVehicleManager() {
+	private DriveManager() {
 	}
 
-	public static DriveVehicleManager instance() {
+	public static DriveManager instance() {
 		if (instance == null) {
-			instance = new DriveVehicleManager();
+			instance = new DriveManager();
 		}
 		return instance;
 	}
 
-	public void addDriveVehicleListener(DriveVehicleListener listener) {
-		listenerList.add(DriveVehicleListener.class, listener);
+	public void addDriveListener(DriveListener listener) {
+		listenerList.add(DriveListener.class, listener);
 	}
 
-	public void removeDriveVehicleListener(DriveVehicleListener listener) {
-		listenerList.remove(DriveVehicleListener.class, listener);
+	public void removeDriveVehicleListener(DriveListener listener) {
+		listenerList.remove(DriveListener.class, listener);
 	}
 
-	public void processEvent(DriveVehicleEvent event) {
-		EventListener[] listeners = listenerList.getListeners(DriveVehicleListener.class);
+	public void processEvent(DriveEvent event) {
+		EventListener[] listeners = listenerList.getListeners(DriveListener.class);
 		for (int index = 0; index < listeners.length; index++) {
-			((DriveVehicleListener) listeners[index]).driveVehicle(event);
+			((DriveListener) listeners[index]).drive(event);
 		}
 	}
 }

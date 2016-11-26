@@ -47,7 +47,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	private class SimpleDisplay extends JFrame {
     private OffButton offButton = new OffButton("off");
     private OnButton onButton = new OnButton("on");
-		private DriveVehicleButton vehicleDriver = new DriveVehicleButton("drive vehicle");
+		private DriveButton vehicleDriver = new DriveButton("drive vehicle");
 		private VehicleParkButton parkGear = new VehicleParkButton("park vehicle");
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
     private BrakeButton brakeButton = new BrakeButton("brake");

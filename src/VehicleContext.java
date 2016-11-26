@@ -34,7 +34,7 @@ public class VehicleContext {
 	private VehicleContext() {
 		instance = this;
     vehicleDisplay = VehicleDisplay.instance();
-		currentState = DriveVehicleState.instance();
+		currentState = DriveState.instance();
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class VehicleContext {
 	 * observable for clock
 	 */
 	public void initialize() {
-		instance.changeCurrentState(DriveVehicleState.instance());
+		instance.changeCurrentState(DriveState.instance());
 	}
 
 	/**

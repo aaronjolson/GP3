@@ -61,7 +61,7 @@ public class BrakingState extends VehicleState
    */
   public void timerRanOut(TimerRanOutEvent event) {
     display.displayTimeRemaining(Timer.instance().getTimeValue());
-    context.changeCurrentState(DriveVehicleState.instance());
+    context.changeCurrentState(DriveState.instance());
   }
 
   /**

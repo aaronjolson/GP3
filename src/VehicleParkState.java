@@ -22,7 +22,7 @@
  * Represents the door opened state
  *
  */
-public class VehicleParkState extends VehicleState implements DriveVehicleListener {
+public class VehicleParkState extends VehicleState implements DriveListener {
 	private static VehicleParkState instance;
 
 	private VehicleParkState() {
@@ -30,7 +30,7 @@ public class VehicleParkState extends VehicleState implements DriveVehicleListen
 	}
 
 	public void leave() {
-    DriveVehicleManager.instance().removeDriveVehicleListener(this);
+    DriveManager.instance().removeDriveVehicleListener(this);
 	}
 
 	/**
@@ -49,8 +49,8 @@ public class VehicleParkState extends VehicleState implements DriveVehicleListen
 	 * Process drive vehicle event
 	 */
 	@Override
-	public void driveVehicle(DriveVehicleEvent event) {
-		context.changeCurrentState(DriveVehicleState.instance());
+	public void drive(DriveEvent event) {
+		context.changeCurrentState(DriveState.instance());
 
 	}
 
@@ -58,7 +58,7 @@ public class VehicleParkState extends VehicleState implements DriveVehicleListen
 	 * Initialize the state
 	 */
 	public void run() {
-    DriveVehicleManager.instance().addDriveVehicleListener(this);
+    DriveManager.instance().addDriveListener(this);
 		display.turnLightOn();
 		display.notAccelerating();
 		display.vehicleParked();
