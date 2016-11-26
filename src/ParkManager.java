@@ -22,32 +22,32 @@ import java.util.EventListener;
 
 import javax.swing.event.EventListenerList;
 
-public class VehicleParkManager {
+public class ParkManager {
 	private EventListenerList listenerList = new EventListenerList();
-	private static VehicleParkManager instance;
+	private static ParkManager instance;
 
-	private VehicleParkManager() {
+	private ParkManager() {
 	}
 
-	public static VehicleParkManager instance() {
+	public static ParkManager instance() {
 		if (instance == null) {
-			instance = new VehicleParkManager();
+			instance = new ParkManager();
 		}
 		return instance;
 	}
 
-	public void addVehicleParkListener(VehicleParkListener listener) {
-		listenerList.add(VehicleParkListener.class, listener);
+	public void addVehicleParkListener(ParkListener listener) {
+		listenerList.add(ParkListener.class, listener);
 	}
 
-	public void removeVehicleParkListener(VehicleParkListener listener) {
-		listenerList.remove(VehicleParkListener.class, listener);
+	public void removeVehicleParkListener(ParkListener listener) {
+		listenerList.remove(ParkListener.class, listener);
 	}
 
-	public void processEvent(VehicleParkEvent event) {
-		EventListener[] listeners = listenerList.getListeners(VehicleParkListener.class);
+	public void processEvent(ParkEvent event) {
+		EventListener[] listeners = listenerList.getListeners(ParkListener.class);
 		for (int index = 0; index < listeners.length; index++) {
-			((VehicleParkListener) listeners[index]).vehicleParked(event);
+			((ParkListener) listeners[index]).vehicleParked(event);
 		}
 	}
 }

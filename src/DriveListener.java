@@ -20,6 +20,6 @@
  */
 import java.util.EventListener;
 
-public interface DriveVehicleListener extends EventListener {
-	public void driveVehicle(DriveVehicleEvent event);
+public interface DriveListener extends EventListener {
+	public void drive(DriveEvent event);
 }

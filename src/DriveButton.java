@@ -21,14 +21,14 @@
  * Represents the vehicle drive button
  *
  */
-public class DriveVehicleButton extends GUIButton {
+public class DriveButton extends GUIButton {
 	/**
 	 * Crates the button with the required label
 	 * 
 	 * @param string
 	 *            the label
 	 */
-	public DriveVehicleButton(String string) {
+	public DriveButton(String string) {
 		super(string);
 	}
 
@@ -36,6 +36,6 @@ public class DriveVehicleButton extends GUIButton {
 	 * Tell the manager to send it to the right listeners
 	 */
 	public void inform(VehicleDisplay source) {
-    DriveVehicleManager.instance().processEvent(new DriveVehicleEvent(source));
+    DriveManager.instance().processEvent(new DriveEvent(source));
 	}
 }

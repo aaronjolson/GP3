@@ -20,8 +20,8 @@
  */
 import java.util.EventObject;
 
-public class DriveVehicleEvent extends EventObject {
-	public DriveVehicleEvent(Object source) {
+public class ParkEvent extends EventObject {
+	public ParkEvent(Object source) {
 		super(source);
 	}
 }

@@ -1,3 +1,4 @@
+
 /**
  * 
  * @author Brahma Dathan and Sarnath Ramnath
@@ -17,26 +18,8 @@
  * The authors do not make any claims regarding the correctness of the code in this module
  * and are not responsible for any loss or damage resulting from its use.  
  */
-/**
- * The button that represents door open
- *
- */
-public class VehicleParkButton extends GUIButton {
-	/**
-	 * Create the button with the proper display
-	 * 
-	 * @param string
-	 *            the text to be put
-	 */
-	public VehicleParkButton(String string) {
-		super(string);
-	}
+import java.util.EventListener;
 
-	/**
-	 * Create the VehicleParkEvent and tell the manager that the button has been
-	 * clicked.
-	 */
-	public void inform(VehicleDisplay source) {
-    VehicleParkManager.instance().processEvent(new VehicleParkEvent(source));
-	}
+public interface ParkListener extends EventListener {
+	public void vehicleParked(ParkEvent event);
 }

@@ -22,16 +22,16 @@
  * Represents the drive vehicle state
  *
  */
-public class DriveVehicleState extends VehicleState implements AccelerateRequestListener, VehicleParkListener {
-	private static DriveVehicleState instance;
+public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, ParkListener {
+	private static DriveState instance;
 
-	private DriveVehicleState() {
+	private DriveState() {
 		instance = this;
 	}
 
 	public void leave() {
     AccelerateRequestManager.instance().removeAccelerateRequestListener(instance);
-    VehicleParkManager.instance().removeVehicleParkListener(instance);
+    ParkManager.instance().removeVehicleParkListener(instance);
 	}
 
 	/**
@@ -39,21 +39,21 @@ public class DriveVehicleState extends VehicleState implements AccelerateRequest
 	 * 
 	 * @return this object
 	 */
-	public static DriveVehicleState instance() {
+	public static DriveState instance() {
 		if (instance == null) {
-			instance = new DriveVehicleState();
+			instance = new DriveState();
 		}
 		return instance;
 	}
 
 	/**
-	 * handle door open event
+	 * handle park event
 	 * 
 	 */
 
 	@Override
-	public void vehicleParked(VehicleParkEvent event) {
-		context.changeCurrentState(VehicleParkState.instance());
+	public void vehicleParked(ParkEvent event) {
+		context.changeCurrentState(ParkState.instance());
 	}
 
 	/**
@@ -66,13 +66,19 @@ public class DriveVehicleState extends VehicleState implements AccelerateRequest
 		context.changeCurrentState(AcceleratingState.instance());
 	}
 
+  @Override
+  public void brakeRequested(BrakeRequestEvent event) {
+    context.changeCurrentState(BrakingState.instance());
+  }
+
 	/**
 	 * initialize the state
 	 * 
 	 */
 	public void run() {
     AccelerateRequestManager.instance().addAccelerateRequestListener(instance);
-    VehicleParkManager.instance().addVehicleParkListener(instance);
+    BrakeRequestManager.instance().addBrakeRequestListener(instance);
+    ParkManager.instance().addVehicleParkListener(instance);
 		display.vehicleDrived();
 		display.turnLightOff();
 		display.notAccelerating();

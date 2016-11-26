@@ -45,11 +45,14 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 *
 	 */
 	private class SimpleDisplay extends JFrame {
-		private DriveVehicleButton vehicleDriver = new DriveVehicleButton("drive vehicle");
-		private VehicleParkButton parkGear = new VehicleParkButton("park vehicle");
+    private OffButton offButton = new OffButton("off");
+    private OnButton onButton = new OnButton("on");
+		private DriveButton driveGear = new DriveButton("drive");
+		private ParkButton parkGear = new ParkButton("park");
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
-		private JLabel doorStatus = new JLabel("drive vehicle");
-		private JLabel timerValue = new JLabel("            ");
+    private BrakeButton brakeButton = new BrakeButton("brake");
+		private JLabel gearStatus = new JLabel("drive");
+		private JLabel timerValue = new JLabel("                                        ");
 		private JLabel lightStatus = new JLabel("Light Off");
 		private JLabel acceleratingStatus = new JLabel("Not accelerating");
 
@@ -58,17 +61,21 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		 */
 		private SimpleDisplay() {
 			super("Vehicle");
-			getContentPane().setLayout(new FlowLayout());
-			getContentPane().add(doorStatus);
+			getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
+      getContentPane().add(gearStatus);
 			getContentPane().add(lightStatus);
 			getContentPane().add(timerValue);
 			getContentPane().add(acceleratingStatus);
-			getContentPane().add(vehicleDriver);
+      getContentPane().add(offButton);
+      getContentPane().add(onButton);
+			getContentPane().add(driveGear);
 			getContentPane().add(parkGear);
+      getContentPane().add(brakeButton);
 			getContentPane().add(accelerateButton);
-			vehicleDriver.addActionListener(GUIDisplay.this);
+			driveGear.addActionListener(GUIDisplay.this);
 			parkGear.addActionListener(GUIDisplay.this);
 			accelerateButton.addActionListener(GUIDisplay.this);
+      brakeButton.addActionListener(GUIDisplay.this);
 			pack();
 			setVisible(true);
 		}
@@ -99,14 +106,14 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is in drive
 	 */
 	public void vehicleDrived() {
-		frame.doorStatus.setText("Vehicle in Drive");
+		frame.gearStatus.setText("Vehicle in Drive");
 	}
 
 	/**
 	 * Indicate that the door is opened
 	 */
 	public void vehicleParked() {
-		frame.doorStatus.setText("Vehicle in Park");
+		frame.gearStatus.setText("Vehicle in Park");
 	}
 
 	/**
@@ -115,7 +122,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * @param value the value remaining
 	 */
 	public void displayTimeRemaining(int value) {
-		frame.timerValue.setText(" " + value);
+		frame.timerValue.setText("Current Speed" + " " + value + "mph");
 	}
 
 	/**
@@ -124,6 +131,10 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	public void startAccelerating() {
 		frame.acceleratingStatus.setText("accelerating");
 	}
+
+  public void startBraking() {
+    frame.acceleratingStatus.setText("braking");
+  }
 
 	/**
 	 * Indicate that accelerating is done
