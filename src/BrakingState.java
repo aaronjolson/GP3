@@ -77,6 +77,7 @@ public class BrakingState extends VehicleState
 //    display.turnLightOn();
 //    Timer.instance().setTimeValue(0);
     display.notAccelerating();
+    display.startBraking();
     Timer.instance().setAccelerating(false);
     display.displayTimeRemaining(Timer.instance().getTimeValue());
   }

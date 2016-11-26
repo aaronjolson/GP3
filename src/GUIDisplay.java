@@ -118,7 +118,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * @param value the value remaining
 	 */
 	public void displayTimeRemaining(int value) {
-		frame.timerValue.setText(" " + value);
+		frame.timerValue.setText("Current Speed" + " " + value + "mph");
 	}
 
 	/**

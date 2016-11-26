@@ -83,4 +83,6 @@ public abstract class VehicleDisplay extends Observable {
 	 * indicate that accelerating has ended
 	 */
 	public abstract void notAccelerating();
+
+  public abstract void startBraking();
 }

@@ -52,7 +52,7 @@ public class Clock extends Observable implements Runnable {
 	}
 
 	/**
-	 * Infinite loop to generate the clock ticks Notify all users when clock
+	 * Infinite loop to generate the clock ticks and notify all users when clock
 	 * ticks
 	 */
 	public void run() {
