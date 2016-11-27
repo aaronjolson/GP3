@@ -55,19 +55,19 @@ public abstract class VehicleDisplay extends Observable {
 	public abstract void displayTimeRemaining(int time);
 
 	/**
-	 * Indicate that the light is on
+	 * Indicate that the vehicle is on
 	 */
-	public abstract void turnLightOn();
+	public abstract void turnVehicleOn();
 
 	/**
-	 * Indicate that the light is off
+	 * Indicate that the vehicle is off
 	 */
-	public abstract void turnLightOff();
+	public abstract void turnVehicleOff();
 
 	/**
-	 * Indicate that the door is now closed
+	 * Indicate that the vehicle is now closed
 	 */
-	public abstract void vehicleDrived();
+	public abstract void driveVehicle();
 
 	/**
 	 * Indicate that the door is now open
