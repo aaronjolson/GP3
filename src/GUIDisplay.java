@@ -26,7 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
- * GUI to implement the VehicleDisplay interface A pretty elementary interface
+ * GUI to implement the VehicleDisplay interface. A pretty elementary interface
  *
  */
 public class GUIDisplay extends VehicleDisplay implements ActionListener {
@@ -41,7 +41,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	}
 
 	/**
-	 * This class has most of the widgets
+	 * This class has most of the widgets.
 	 *
 	 */
 	private class SimpleDisplay extends JFrame {
@@ -52,8 +52,9 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
     private BrakeButton brakeButton = new BrakeButton("brake");
 		private JLabel gearStatus = new JLabel("drive");
-		private JLabel timerValue = new JLabel("                                        ");
-		private JLabel lightStatus = new JLabel("Light Off");
+		private JLabel speedValue = new JLabel("                                " +
+        "                                  ");
+		private JLabel vehicleStatus = new JLabel("Vehicle Off");
 		private JLabel acceleratingStatus = new JLabel("Not accelerating");
 
 		/**
@@ -62,9 +63,9 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		private SimpleDisplay() {
 			super("Vehicle");
 			getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER));
+      getContentPane().add(vehicleStatus);
       getContentPane().add(gearStatus);
-			getContentPane().add(lightStatus);
-			getContentPane().add(timerValue);
+			getContentPane().add(speedValue);
 			getContentPane().add(acceleratingStatus);
       getContentPane().add(offButton);
       getContentPane().add(onButton);
@@ -91,21 +92,21 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	/**
 	 * Indicate that the light is on
 	 */
-	public void turnLightOn() {
-		frame.lightStatus.setText("Light On");
+	public void turnVehicleOn() {
+		frame.vehicleStatus.setText("Vehicle On");
 	}
 
 	/**
 	 * Indicate that the light is off
 	 */
-	public void turnLightOff() {
-		frame.lightStatus.setText("Light Off");
+	public void turnVehicleOff() {
+		frame.vehicleStatus.setText("Vehicle Off");
 	}
 
 	/**
 	 * Indicate that the vehicle is in drive
 	 */
-	public void vehicleDrived() {
+	public void driveVehicle() {
 		frame.gearStatus.setText("Vehicle in Drive");
 	}
 
@@ -122,7 +123,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * @param value the value remaining
 	 */
 	public void displayTimeRemaining(int value) {
-		frame.timerValue.setText("Current Speed" + " " + value + "mph");
+		frame.speedValue.setText("Current Speed" + " " + value + "mph");
 	}
 
 	/**
