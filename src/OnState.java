@@ -71,11 +71,11 @@ public class OnState extends VehicleState
    *
    */
   public void run() {
-    ParkManager.instance().addVehicleParkListener(this);
+    ParkRequestManager.instance().addVehicleParkListener(this);
     OnRequestManager.instance().addOnRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
-    display.turnLightOn();
+    display.turnVehicleOn();
     Timer.instance().setTimeValue(0);
     display.displayTimeRemaining(Timer.instance().getTimeValue());
   }
