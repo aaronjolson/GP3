@@ -1,10 +1,14 @@
 import java.util.EventListener;
 import javax.swing.event.EventListenerList;
 
+
 public class OnRequestManager {
   private EventListenerList listenerList = new EventListenerList();
   private static OnRequestManager instance;
 
+  /**
+   *  Private constructor to keep the class private
+   */
   private OnRequestManager() {
   }
 
