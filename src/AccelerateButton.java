@@ -1,26 +1,10 @@
 /**
- * 
- * @author Brahma Dathan and Sarnath Ramnath
- * @Copyright (c) 2010
- * 
- *            Redistribution and use with or without modification, are permitted
- *            provided that the following conditions are met:
- *
- *            - the use is for academic purpose only - Redistributions of source
- *            code must retain the above copyright notice, this list of
- *            conditions and the following disclaimer. - Neither the name of
- *            Brahma Dathan or Sarnath Ramnath may be used to endorse or promote
- *            products derived from this software without specific prior written
- *            permission.
- *
- *            The authors do not make any claims regarding the correctness of
- *            the code in this module and are not responsible for any loss or
- *            damage resulting from its use.
+ * GUIButton subclass to handle engaging acceleration.
  */
 public class AccelerateButton extends GUIButton {
-	/**
+
+  /**
 	 * The button for accelerating
-	 * 
 	 * @param string
 	 */
 	public AccelerateButton(String string) {
@@ -28,8 +12,8 @@ public class AccelerateButton extends GUIButton {
 	}
 
 	/**
-	 * Creates a AccelerateRequestEvent, so the interested states can get it. Call the
-	 * manager, so it can forward it
+	 * Creates an AccelerateRequestEvent, so the interested states can get it.
+   * Calls the manager, so it can forward it
 	 */
 	public void inform(VehicleDisplay source) {
     AccelerateRequestManager.instance().processEvent(new AccelerateRequestEvent(source));
