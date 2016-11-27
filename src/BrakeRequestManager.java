@@ -1,11 +1,14 @@
 import java.util.EventListener;
-
 import javax.swing.event.EventListenerList;
+
 
 public class BrakeRequestManager {
   private EventListenerList listenerList = new EventListenerList();
   private static BrakeRequestManager instance;
 
+  /**
+   *  Private constructor to keep the class private
+   */
   private BrakeRequestManager() {
   }
 
