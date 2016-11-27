@@ -30,7 +30,7 @@ public class ParkState extends VehicleState implements DriveListener {
 	}
 
 	public void leave() {
-    DriveManager.instance().removeDriveVehicleListener(this);
+    DriveRequestManager.instance().removeDriveVehicleListener(this);
 	}
 
 	/**
@@ -58,9 +58,10 @@ public class ParkState extends VehicleState implements DriveListener {
 	 * Initialize the state
 	 */
 	public void run() {
-    DriveManager.instance().addDriveListener(this);
-		display.turnLightOn();
-		display.notAccelerating();
+    DriveRequestManager.instance().addDriveListener(this);
+//		display.turnLightOn();
+//		display.notAccelerating();
+//    display.startBraking();
 		display.vehicleParked();
 		display.displayTimeRemaining(0);
 	}
