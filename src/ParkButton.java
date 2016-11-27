@@ -36,6 +36,6 @@ public class ParkButton extends GUIButton {
 	 * clicked.
 	 */
 	public void inform(VehicleDisplay source) {
-    ParkManager.instance().processEvent(new ParkEvent(source));
+    ParkRequestManager.instance().processEvent(new ParkEvent(source));
 	}
 }
