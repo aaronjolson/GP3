@@ -3,7 +3,7 @@
  *
  */
 public class BrakingState extends VehicleState
-    implements BrakeRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
+    implements BrakeRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener, AccelerateRequestListener {
   private static BrakingState instance;
 
   /**
@@ -42,11 +42,18 @@ public class BrakingState extends VehicleState
     display.displayTimeRemaining(Timer.instance().getTimeValue());
   }
 
+  @Override
+  public void accelerateRequested(AccelerateRequestEvent event) {
+    context.changeCurrentState(AcceleratingState.instance());
+  }
+
   /**
-   * Process door open request
+   * Process park vehicle request
    */
   public void vehicleParked(ParkEvent event) {
-    context.changeCurrentState(ParkState.instance());
+    if (Timer.instance().getTimeValue() == 0) {
+      context.changeCurrentState(ParkState.instance());
+    }
   }
 
   /**
@@ -61,7 +68,7 @@ public class BrakingState extends VehicleState
    */
   public void timerRanOut(TimerRanOutEvent event) {
     display.displayTimeRemaining(Timer.instance().getTimeValue());
-    context.changeCurrentState(DriveState.instance());
+//    context.changeCurrentState(DriveState.instance());
   }
 
   /**
@@ -70,13 +77,14 @@ public class BrakingState extends VehicleState
    *
    */
   public void run() {
-    ParkManager.instance().addVehicleParkListener(this);
+    ParkRequestManager.instance().addVehicleParkListener(this);
+    AccelerateRequestManager.instance().addAccelerateRequestListener(this);
     BrakeRequestManager.instance().addBrakeRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
 //    display.turnLightOn();
 //    Timer.instance().setTimeValue(0);
-    display.notAccelerating();
+//    display.notAccelerating();
     display.startBraking();
     Timer.instance().setAccelerating(false);
     display.displayTimeRemaining(Timer.instance().getTimeValue());
