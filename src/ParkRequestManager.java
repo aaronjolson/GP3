@@ -22,16 +22,16 @@ import java.util.EventListener;
 
 import javax.swing.event.EventListenerList;
 
-public class ParkManager {
+public class ParkRequestManager {
 	private EventListenerList listenerList = new EventListenerList();
-	private static ParkManager instance;
+	private static ParkRequestManager instance;
 
-	private ParkManager() {
+	private ParkRequestManager() {
 	}
 
-	public static ParkManager instance() {
+	public static ParkRequestManager instance() {
 		if (instance == null) {
-			instance = new ParkManager();
+			instance = new ParkRequestManager();
 		}
 		return instance;
 	}
