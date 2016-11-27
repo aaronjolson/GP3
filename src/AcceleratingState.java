@@ -23,7 +23,7 @@
  *
  */
 public class AcceleratingState extends VehicleState
-		implements AccelerateRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
+		implements AccelerateRequestListener, TimerRanOutListener, TimerTickedListener {
 	private static AcceleratingState instance;
 
 	/**
@@ -34,8 +34,8 @@ public class AcceleratingState extends VehicleState
 	}
 
 	/**
-	 * Removes as a listener from all managers
-	 * 
+	 * Removes listeners from managers
+	 *
 	 */
 	public void leave() {
 		AccelerateRequestManager.instance().removeAccelerateRequestListener(this);
@@ -44,8 +44,8 @@ public class AcceleratingState extends VehicleState
 	}
 
 	/**
-	 * For singleton
-	 * 
+	 * For creating instance as singleton
+	 *
 	 * @return the object
 	 */
 	public static AcceleratingState instance() {
@@ -59,16 +59,9 @@ public class AcceleratingState extends VehicleState
 	 * Process Accelerate request
 	 */
 	public void accelerateRequested(AccelerateRequestEvent event) {
-//		Timer.instance().addTimeValue(0);
 		display.displayTimeRemaining(Timer.instance().getTimeValue());
 	}
 
-	/**
-	 * Process door open request
-	 */
-	public void vehicleParked(ParkEvent event) {
-		context.changeCurrentState(ParkState.instance());
-	}
 
 	/**
 	 * Process clock tick Generates the timer runs out event
@@ -86,17 +79,14 @@ public class AcceleratingState extends VehicleState
 	}
 
 	/**
-	 * Initializes the state Adds itself as a listener to managers Updates the
-	 * dosplays
-	 * 
+	 * Initializes the state Adds itself as a listener to managers.
+   * Updates the displays.
+	 *
 	 */
 	public void run() {
-    ParkManager.instance().addVehicleParkListener(this);
     AccelerateRequestManager.instance().addAccelerateRequestListener(this);
 		TimerRanOutManager.instance().addTimerRanOutListener(this);
 		TimerTickedManager.instance().addTimerTickedListener(this);
-		display.turnLightOn();
-		Timer.instance().setTimeValue(0);
     Timer.instance().setAccelerating(true);
 		display.startAccelerating();
 		display.displayTimeRemaining(Timer.instance().getTimeValue());
