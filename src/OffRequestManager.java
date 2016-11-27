@@ -5,6 +5,9 @@ public class OffRequestManager {
   private EventListenerList listenerList = new EventListenerList();
   private static OffRequestManager instance;
 
+  /**
+   *  Private constructor to keep the class private
+   */
   private OffRequestManager() {
   }
 
