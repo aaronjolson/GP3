@@ -36,6 +36,6 @@ public class DriveButton extends GUIButton {
 	 * Tell the manager to send it to the right listeners
 	 */
 	public void inform(VehicleDisplay source) {
-    DriveManager.instance().processEvent(new DriveEvent(source));
+    DriveRequestManager.instance().processEvent(new DriveEvent(source));
 	}
 }
