@@ -66,16 +66,16 @@ public class OffState extends VehicleState
   }
 
   /**
-   * Initializes the state Adds itself as a listener to managers Updates the
+   * Initializes the state Adds itself as a listener to managers. Updates the
    * displays
    *
    */
   public void run() {
-    ParkManager.instance().addVehicleParkListener(this);
+    ParkRequestManager.instance().addVehicleParkListener(this);
     OffRequestManager.instance().addOffRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
-    display.turnLightOn();
+    display.turnVehicleOff();
     Timer.instance().setTimeValue(0);
     display.displayTimeRemaining(Timer.instance().getTimeValue());
   }
