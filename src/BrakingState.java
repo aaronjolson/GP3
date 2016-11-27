@@ -39,7 +39,7 @@ public class BrakingState extends VehicleState
    * Process brake request
    */
   public void brakeRequested(BrakeRequestEvent event) {
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 
   @Override
@@ -51,7 +51,7 @@ public class BrakingState extends VehicleState
    * Process park vehicle request
    */
   public void vehicleParked(ParkEvent event) {
-    if (Timer.instance().getTimeValue() == 0) {
+    if (Timer.instance().getSpeed() == 0) {
       context.changeCurrentState(ParkState.instance());
     }
   }
@@ -60,20 +60,19 @@ public class BrakingState extends VehicleState
    * Process clock tick Generates the timer runs out event
    */
   public void timerTicked(TimerTickedEvent event) {
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 
   /**
    * Process clock ticks Generates the timer runs out event
    */
   public void timerRanOut(TimerRanOutEvent event) {
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
-//    context.changeCurrentState(DriveState.instance());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 
   /**
-   * Initializes the state Adds itself as a listener to managers Updates the
-   * dosplays
+   * Initializes the state Adds itself as a listener to managers. Updates the
+   * displays
    *
    */
   public void run() {
@@ -82,11 +81,8 @@ public class BrakingState extends VehicleState
     BrakeRequestManager.instance().addBrakeRequestListener(this);
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
-//    display.turnLightOn();
-//    Timer.instance().setTimeValue(0);
-//    display.notAccelerating();
     display.startBraking();
     Timer.instance().setAccelerating(false);
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 }

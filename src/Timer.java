@@ -23,7 +23,7 @@ import java.util.Observer;
 
 public class Timer implements Observer {
 	private static Timer instance;
-	private int timeValue;
+	private int speed;
   private boolean accelerating;
 
 	private Timer() {
@@ -38,16 +38,16 @@ public class Timer implements Observer {
 		return instance;
 	}
 
-	public void setTimeValue(int value) {
-		this.timeValue = value;
+	public void setSpeed(int value) {
+		this.speed = value;
 	}
 
-	public void addTimeValue(int value) {
-		timeValue += value;
+	public void addSpeed(int value) {
+		speed += value;
 	}
 
-	public int getTimeValue() {
-		return timeValue;
+	public int getSpeed() {
+		return speed;
 	}
 
 	public void setAccelerating(boolean state) {
@@ -61,17 +61,17 @@ public class Timer implements Observer {
 	@Override
 	public void update(Observable clock, Object value) {
     if (getAccelerating()) {
-      timeValue += 5;
+      speed += 5;
     } else {
-      timeValue -= 5;
+      speed -= 5;
     }
-    if (timeValue >= 50) {
-      timeValue = 50;
+    if (speed >= 50) {
+      speed = 50;
     }
-    if (timeValue <= 0) {
-      timeValue = 0;
+    if (speed <= 0) {
+      speed = 0;
     }
-    if (timeValue == 0) {
+    if (speed == 0) {
 			TimerRanOutManager.instance().processEvent(new TimerRanOutEvent(instance));
 		} else {
 			TimerTickedManager.instance().processEvent(new TimerTickedEvent(instance));

@@ -39,8 +39,7 @@ public class OffState extends VehicleState
    * Process off request
    */
   public void offRequested(OffRequestEvent event) {
-//		Timer.instance().addTimeValue(0);
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 
   /**
@@ -54,14 +53,14 @@ public class OffState extends VehicleState
    * Process clock tick Generates the timer runs out event
    */
   public void timerTicked(TimerTickedEvent event) {
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 
   /**
    * Process clock ticks Generates the timer runs out event
    */
   public void timerRanOut(TimerRanOutEvent event) {
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    display.displaySpeed(Timer.instance().getSpeed());
     context.changeCurrentState(DriveState.instance());
   }
 
@@ -76,7 +75,7 @@ public class OffState extends VehicleState
     TimerRanOutManager.instance().addTimerRanOutListener(this);
     TimerTickedManager.instance().addTimerTickedListener(this);
     display.turnVehicleOff();
-    Timer.instance().setTimeValue(0);
-    display.displayTimeRemaining(Timer.instance().getTimeValue());
+    Timer.instance().setSpeed(0);
+    display.displaySpeed(Timer.instance().getSpeed());
   }
 }

@@ -81,7 +81,7 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
     ParkRequestManager.instance().addVehicleParkListener(instance);
 		display.driveVehicle();
 		display.notAccelerating();
-		display.displayTimeRemaining(0);
-		Timer.instance().setTimeValue(0);
+		display.displaySpeed(0);
+		Timer.instance().setSpeed(0);
 	}
 }

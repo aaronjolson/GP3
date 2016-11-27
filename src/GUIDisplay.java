@@ -47,8 +47,8 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	private class SimpleDisplay extends JFrame {
     private OffButton offButton = new OffButton("off");
     private OnButton onButton = new OnButton("on");
-		private DriveButton driveGear = new DriveButton("drive");
 		private ParkButton parkGear = new ParkButton("park");
+    private DriveButton driveGear = new DriveButton("drive");
 		private AccelerateButton accelerateButton = new AccelerateButton("accelerate");
     private BrakeButton brakeButton = new BrakeButton("brake");
 		private JLabel gearStatus = new JLabel("drive");
@@ -69,8 +69,8 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 			getContentPane().add(acceleratingStatus);
       getContentPane().add(offButton);
       getContentPane().add(onButton);
-			getContentPane().add(driveGear);
 			getContentPane().add(parkGear);
+      getContentPane().add(driveGear);
       getContentPane().add(brakeButton);
 			getContentPane().add(accelerateButton);
 			driveGear.addActionListener(GUIDisplay.this);
@@ -107,14 +107,14 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is in drive
 	 */
 	public void driveVehicle() {
-		frame.gearStatus.setText("Vehicle in Drive");
+		frame.gearStatus.setText("Gear in Drive");
 	}
 
 	/**
 	 * Indicate that the door is opened
 	 */
 	public void vehicleParked() {
-		frame.gearStatus.setText("Vehicle in Park");
+		frame.gearStatus.setText("Gear in Park");
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * 
 	 * @param value the value remaining
 	 */
-	public void displayTimeRemaining(int value) {
+	public void displaySpeed(int value) {
 		frame.speedValue.setText("Current Speed" + " " + value + "mph");
 	}
 
@@ -141,7 +141,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that accelerating is done
 	 */
 	public void notAccelerating() {
-		frame.acceleratingStatus.setText("Not accelerating");
+		frame.acceleratingStatus.setText("idle");
 	}
 
 	/**

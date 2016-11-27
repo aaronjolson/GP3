@@ -59,11 +59,8 @@ public class ParkState extends VehicleState implements DriveListener {
 	 */
 	public void run() {
     DriveRequestManager.instance().addDriveListener(this);
-//		display.turnLightOn();
-//		display.notAccelerating();
-//    display.startBraking();
 		display.vehicleParked();
-		display.displayTimeRemaining(0);
+		display.displaySpeed(0);
 	}
 
 }

@@ -52,7 +52,7 @@ public abstract class VehicleDisplay extends Observable {
 		context.initialize();
 	}
 
-	public abstract void displayTimeRemaining(int time);
+	public abstract void displaySpeed(int speed);
 
 	/**
 	 * Indicate that the vehicle is on
