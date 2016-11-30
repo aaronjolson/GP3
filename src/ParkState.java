@@ -19,10 +19,10 @@
  */
 
 /**
- * Represents the door opened state
+ * Represents the parked state
  *
  */
-public class ParkState extends VehicleState implements DriveListener {
+public class ParkState extends VehicleState implements ParkListener, DriveListener, OffRequestListener {
 	private static ParkState instance;
 
 	private ParkState() {
@@ -30,7 +30,9 @@ public class ParkState extends VehicleState implements DriveListener {
 	}
 
 	public void leave() {
-    DriveRequestManager.instance().removeDriveVehicleListener(this);
+    ParkRequestManager.instance().removeParkListener(instance);
+    DriveRequestManager.instance().removeDriveListener(instance);
+    OffRequestManager.instance().removeOffRequestListener(instance);
 	}
 
 	/**
@@ -45,22 +47,35 @@ public class ParkState extends VehicleState implements DriveListener {
 		return instance;
 	}
 
-	/**
-	 * Process drive vehicle event
-	 */
-	@Override
-	public void drive(DriveEvent event) {
-		context.changeCurrentState(DriveState.instance());
+  /**
+   * Process drive vehicle event
+   */
+  @Override
+  public void drive(DriveEvent event) {
+    context.changeCurrentState(DriveState.instance());
+  }
 
-	}
+  /**
+   * Process drive vehicle event
+   */
+  @Override
+  public void vehicleParked(ParkEvent event) {
+    context.changeCurrentState(ParkState.instance());
+  }
+
+
+	@Override
+  public void offRequested(OffRequestEvent event) {
+    context.changeCurrentState(OffState.instance());
+  }
 
 	/**
 	 * Initialize the state
 	 */
 	public void run() {
-    DriveRequestManager.instance().addDriveListener(this);
+    ParkRequestManager.instance().addParkListener(instance);
+    DriveRequestManager.instance().addDriveListener(instance);
+    OffRequestManager.instance().addOffRequestListener(instance);
 		display.vehicleParked();
-		display.displaySpeed(0);
 	}
-
 }

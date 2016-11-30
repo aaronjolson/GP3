@@ -2,7 +2,7 @@
  * Represents the accelerating state.
  */
 public class AcceleratingState extends VehicleState
-		implements AccelerateRequestListener, TimerRanOutListener, TimerTickedListener {
+		implements AccelerateRequestListener, BrakeRequestListener, TimerRanOutListener, TimerTickedListener {
 	private static AcceleratingState instance;
 
 	/**
@@ -16,9 +16,10 @@ public class AcceleratingState extends VehicleState
 	 * Removes listeners from managers
 	 */
 	public void leave() {
-		AccelerateRequestManager.instance().removeAccelerateRequestListener(this);
-		TimerRanOutManager.instance().removeTimerRanOutListener(this);
-		TimerTickedManager.instance().removeTimerTickedListener(this);
+		AccelerateRequestManager.instance().removeAccelerateRequestListener(instance);
+    BrakeRequestManager.instance().removeBrakeRequestListener(instance);
+		TimerRanOutManager.instance().removeTimerRanOutListener(instance);
+		TimerTickedManager.instance().removeTimerTickedListener(instance);
 	}
 
 	/**
@@ -40,6 +41,12 @@ public class AcceleratingState extends VehicleState
 		display.displaySpeed(Timer.instance().getSpeed());
 	}
 
+  /**
+   * Process Accelerate request
+   */
+  public void brakeRequested(BrakeRequestEvent event) {
+    context.changeCurrentState(BrakingState.instance());
+  }
 
 	/**
 	 * Process clock tick Generates the timer runs out event
@@ -62,9 +69,10 @@ public class AcceleratingState extends VehicleState
 	 *
 	 */
 	public void run() {
-    AccelerateRequestManager.instance().addAccelerateRequestListener(this);
-		TimerRanOutManager.instance().addTimerRanOutListener(this);
-		TimerTickedManager.instance().addTimerTickedListener(this);
+    AccelerateRequestManager.instance().addAccelerateRequestListener(instance);
+    BrakeRequestManager.instance().addBrakeRequestListener(instance);
+		TimerRanOutManager.instance().addTimerRanOutListener(instance);
+		TimerTickedManager.instance().addTimerTickedListener(instance);
     Timer.instance().setAccelerating(true);
 		display.startAccelerating();
 		display.displaySpeed(Timer.instance().getSpeed());

@@ -18,9 +18,11 @@ public class BrakingState extends VehicleState
    *
    */
   public void leave() {
-    BrakeRequestManager.instance().removeBrakeRequestListener(this);
-    TimerRanOutManager.instance().removeTimerRanOutListener(this);
-    TimerTickedManager.instance().removeTimerTickedListener(this);
+    BrakeRequestManager.instance().removeBrakeRequestListener(instance);
+    AccelerateRequestManager.instance().removeAccelerateRequestListener(instance);
+    ParkRequestManager.instance().removeParkListener(instance);
+    TimerRanOutManager.instance().removeTimerRanOutListener(instance);
+    TimerTickedManager.instance().removeTimerTickedListener(instance);
   }
 
   /**
@@ -76,11 +78,11 @@ public class BrakingState extends VehicleState
    *
    */
   public void run() {
-    ParkRequestManager.instance().addVehicleParkListener(this);
-    AccelerateRequestManager.instance().addAccelerateRequestListener(this);
-    BrakeRequestManager.instance().addBrakeRequestListener(this);
-    TimerRanOutManager.instance().addTimerRanOutListener(this);
-    TimerTickedManager.instance().addTimerTickedListener(this);
+    BrakeRequestManager.instance().addBrakeRequestListener(instance);
+    ParkRequestManager.instance().addParkListener(instance);
+    AccelerateRequestManager.instance().addAccelerateRequestListener(instance);
+    TimerRanOutManager.instance().addTimerRanOutListener(instance);
+    TimerTickedManager.instance().addTimerTickedListener(instance);
     display.startBraking();
     Timer.instance().setAccelerating(false);
     display.displaySpeed(Timer.instance().getSpeed());

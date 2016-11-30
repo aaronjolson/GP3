@@ -3,7 +3,7 @@
  *
  */
 public class OnState extends VehicleState
-    implements OnRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
+    implements OnRequestListener, OffRequestListener, DriveListener {
   private static OnState instance;
 
   /**
@@ -18,14 +18,13 @@ public class OnState extends VehicleState
    *
    */
   public void leave() {
-    OnRequestManager.instance().removeOnRequestListener(this);
-    TimerRanOutManager.instance().removeTimerRanOutListener(this);
-    TimerTickedManager.instance().removeTimerTickedListener(this);
+    OnRequestManager.instance().removeOnRequestListener(instance);
+    OffRequestManager.instance().removeOffRequestListener(instance);
+    DriveRequestManager.instance().removeDriveListener(instance);
   }
 
   /**
    * For singleton
-*qaZ
    * @return the object
    */
   public static OnState instance() {
@@ -39,43 +38,33 @@ public class OnState extends VehicleState
    * Process on request
    */
   public void onRequested(OnRequestEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
+    context.changeCurrentState(OnState.instance());
   }
 
   /**
-   * Process door open request
+   * Process off request
    */
-  public void vehicleParked(ParkEvent event) {
-    context.changeCurrentState(ParkState.instance());
+  public void offRequested(OffRequestEvent event) {
+    context.changeCurrentState(OffState.instance());
   }
 
   /**
-   * Process clock tick Generates the timer runs out event
+   * Process drive request
    */
-  public void timerTicked(TimerTickedEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
-  }
-
-  /**
-   * Process clock ticks Generates the timer runs out event
-   */
-  public void timerRanOut(TimerRanOutEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
+  public void drive(DriveEvent event) {
     context.changeCurrentState(DriveState.instance());
   }
 
   /**
    * Initializes the state Adds itself as a listener to managers Updates the
-   * dosplays
+   * displays
    *
    */
   public void run() {
-    ParkRequestManager.instance().addVehicleParkListener(this);
-    OnRequestManager.instance().addOnRequestListener(this);
-    TimerRanOutManager.instance().addTimerRanOutListener(this);
-    TimerTickedManager.instance().addTimerTickedListener(this);
+    OnRequestManager.instance().addOnRequestListener(instance);
+    OffRequestManager.instance().addOffRequestListener(instance);
+    DriveRequestManager.instance().addDriveListener(instance);
     display.turnVehicleOn();
-    Timer.instance().setSpeed(0);
-    display.displaySpeed(Timer.instance().getSpeed());
+    display.vehicleParked();
   }
 }

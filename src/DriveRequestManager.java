@@ -25,7 +25,7 @@ public class DriveRequestManager {
 		listenerList.add(DriveListener.class, listener);
 	}
 
-	public void removeDriveVehicleListener(DriveListener listener) {
+	public void removeDriveListener(DriveListener listener) {
 		listenerList.remove(DriveListener.class, listener);
 	}
 

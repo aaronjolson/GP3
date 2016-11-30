@@ -36,11 +36,11 @@ public class ParkRequestManager {
 		return instance;
 	}
 
-	public void addVehicleParkListener(ParkListener listener) {
+	public void addParkListener(ParkListener listener) {
 		listenerList.add(ParkListener.class, listener);
 	}
 
-	public void removeVehicleParkListener(ParkListener listener) {
+	public void removeParkListener(ParkListener listener) {
 		listenerList.remove(ParkListener.class, listener);
 	}
 

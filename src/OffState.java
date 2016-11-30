@@ -3,7 +3,7 @@
  *
  */
 public class OffState extends VehicleState
-    implements OffRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener {
+    implements OffRequestListener, OnRequestListener, ParkListener {
   private static OffState instance;
 
   /**
@@ -18,9 +18,9 @@ public class OffState extends VehicleState
    *
    */
   public void leave() {
-    OffRequestManager.instance().removeOffRequestListener(this);
-    TimerRanOutManager.instance().removeTimerRanOutListener(this);
-    TimerTickedManager.instance().removeTimerTickedListener(this);
+    OffRequestManager.instance().removeOffRequestListener(instance);
+    OnRequestManager.instance().removeOnRequestListener(instance);
+    ParkRequestManager.instance().removeParkListener(instance);
   }
 
   /**
@@ -39,29 +39,18 @@ public class OffState extends VehicleState
    * Process off request
    */
   public void offRequested(OffRequestEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
+    context.changeCurrentState(OffState.instance());
+  }
+
+  public void onRequested(OnRequestEvent event) {
+    context.changeCurrentState(OnState.instance());
   }
 
   /**
-   * Process door open request
+   * Process park request
    */
   public void vehicleParked(ParkEvent event) {
     context.changeCurrentState(ParkState.instance());
-  }
-
-  /**
-   * Process clock tick Generates the timer runs out event
-   */
-  public void timerTicked(TimerTickedEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
-  }
-
-  /**
-   * Process clock ticks Generates the timer runs out event
-   */
-  public void timerRanOut(TimerRanOutEvent event) {
-    display.displaySpeed(Timer.instance().getSpeed());
-    context.changeCurrentState(DriveState.instance());
   }
 
   /**
@@ -70,12 +59,10 @@ public class OffState extends VehicleState
    *
    */
   public void run() {
-    ParkRequestManager.instance().addVehicleParkListener(this);
-    OffRequestManager.instance().addOffRequestListener(this);
-    TimerRanOutManager.instance().addTimerRanOutListener(this);
-    TimerTickedManager.instance().addTimerTickedListener(this);
+    ParkRequestManager.instance().addParkListener(instance);
+    OffRequestManager.instance().addOffRequestListener(instance);
+    OnRequestManager.instance().addOnRequestListener(instance);
     display.turnVehicleOff();
-    Timer.instance().setSpeed(0);
-    display.displaySpeed(Timer.instance().getSpeed());
+    display.displaySpeed(0);
   }
 }

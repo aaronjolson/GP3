@@ -37,11 +37,8 @@ public abstract class GUIButton extends JButton {
 
 	/**
 	 * Tell the context that the button has been clicked.
-	 * 
-	 * @param context
-	 *            the Miucrowave context
-	 * @param display
-	 *            the GUI
+	 *
+	 * @param display the GUI
 	 */
 	public abstract void inform(VehicleDisplay display);
 }
