@@ -52,6 +52,9 @@ public abstract class VehicleDisplay extends Observable {
 		context.initialize();
 	}
 
+  /**
+   * Indicate that the vehicle's current speed
+   */
 	public abstract void displaySpeed(int speed);
 
 	/**
@@ -65,12 +68,12 @@ public abstract class VehicleDisplay extends Observable {
 	public abstract void turnVehicleOff();
 
 	/**
-	 * Indicate that the vehicle is now closed
+	 * Indicate that the vehicle is in drive
 	 */
 	public abstract void driveVehicle();
 
 	/**
-	 * Indicate that the door is now open
+	 * Indicate that the vehicle now parked
 	 */
 	public abstract void vehicleParked();
 
@@ -78,11 +81,6 @@ public abstract class VehicleDisplay extends Observable {
 	 * indicate that accelerating has begun
 	 */
 	public abstract void startAccelerating();
-
-	/**
-	 * indicate that accelerating has ended
-	 */
-	public abstract void notAccelerating();
 
   /**
    * indicate that braking has begun
