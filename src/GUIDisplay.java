@@ -55,7 +55,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		private JLabel speedValue = new JLabel("                                " +
         "                                  ");
 		private JLabel vehicleStatus = new JLabel("Vehicle Off");
-		private JLabel acceleratingStatus = new JLabel("idle");
+		private JLabel acceleratingStatus = new JLabel("braking");
 
 		/**
 		 * Sets up the interface
@@ -92,7 +92,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	}
 
 	/**
-	 * Indicate that the light is on
+	 * Indicate that the vehicle is on
 	 */
 	public void turnVehicleOn() {
     System.out.println("turning vehicle on");
@@ -100,7 +100,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	}
 
 	/**
-	 * Indicate that the light is off
+	 * Indicate that the vehicle is off
 	 */
 	public void turnVehicleOff() {
     System.out.println("turning vehicle off");
@@ -116,7 +116,7 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	}
 
 	/**
-	 * Indicate that the door is opened
+	 * Indicate that the vehicle is in parked
 	 */
 	public void vehicleParked() {
     System.out.println("gear in park");
@@ -124,39 +124,34 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	}
 
 	/**
-	 * display the remaining time
-	 * 
-	 * @param value the value remaining
+	 * display the speed
+	 * @param value the speed
 	 */
 	public void displaySpeed(int value) {
 		frame.speedValue.setText("Current Speed" + " " + value + "mph");
 	}
 
 	/**
-	 * Indicate that it is accelerating
+	 * Indicate that accelerating has started
 	 */
 	public void startAccelerating() {
     System.out.println("vehicle accelerating");
 		frame.acceleratingStatus.setText("accelerating");
 	}
 
+
+  /**
+   * Indicate that braking has started
+   */
   public void startBraking() {
     System.out.println("vehicle braking");
     frame.acceleratingStatus.setText("braking");
   }
 
 	/**
-	 * Indicate that accelerating is done
-	 */
-	public void notAccelerating() {
-		frame.acceleratingStatus.setText("idle");
-	}
-
-	/**
 	 * The main method. Creates the interface
 	 * 
-	 * @param args
-	 *            not used
+	 * @param args not used
 	 */
 	public static void main(String[] args) {
 		VehicleDisplay display = new GUIDisplay();
