@@ -19,7 +19,7 @@
  */
 
 /**
- * The context is an obserer for the clock and stores the context info for
+ * The context is an observer for the clock and stores the context info for
  * states
  *
  */
@@ -50,7 +50,7 @@ public class VehicleContext {
 	}
 
 	/**
-	 * lets drive vehicle state be the starting state adds the object as an
+	 * lets vehicle state Off be the starting state. Adds the object as an
 	 * observable for clock
 	 */
 	public void initialize() {
@@ -60,8 +60,7 @@ public class VehicleContext {
 	/**
 	 * Called from the states to change the current state
 	 * 
-	 * @param nextState
-	 *            the next state
+	 * @param nextState the next state
 	 */
 	public void changeCurrentState(VehicleState nextState) {
 		currentState.leave();
@@ -71,7 +70,7 @@ public class VehicleContext {
 
 	/**
 	 * Gets the display
-	 * 
+	 *
 	 * @return the display
 	 */
 	public VehicleDisplay getDisplay() {
