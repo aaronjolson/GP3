@@ -39,5 +39,8 @@ public abstract class VehicleState {
 	 */
 	public abstract void run();
 
-	public abstract void leave();
+  /**
+   * Leaves the state
+   */
+  public abstract void leave();
 }
