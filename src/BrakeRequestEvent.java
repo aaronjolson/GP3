@@ -1,10 +1,7 @@
 import java.util.EventObject;
 
 /**
- * Created by agosto on 11/25/16.
- *
- * Represents the accelerate request
- *
+ * Represents the brake request
  */
 public class BrakeRequestEvent extends EventObject {
 
