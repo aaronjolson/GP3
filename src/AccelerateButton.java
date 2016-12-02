@@ -5,7 +5,7 @@ public class AccelerateButton extends GUIButton {
 
   /**
 	 * The button for accelerating
-	 * @param string
+	 * @param string the label
 	 */
 	public AccelerateButton(String string) {
 		super(string);

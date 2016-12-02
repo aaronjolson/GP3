@@ -21,16 +21,26 @@
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * represents the timer
+ */
 public class Timer implements Observer {
 	private static Timer instance;
 	private int speed;
   private boolean accelerating;
 
+  /**
+   * Private for the singleton pattern. Adds observer
+   */
 	private Timer() {
 		instance = this;
 		Clock.instance().addObserver(instance);
 	}
 
+  /**
+   * For singleton
+   * @return the object
+   */
 	public static Timer instance() {
 		if (instance == null) {
 			instance = new Timer();
@@ -38,26 +48,41 @@ public class Timer implements Observer {
 		return instance;
 	}
 
+  /**
+   * For setting the speed
+   * @param value the speed represetning mph
+   */
 	public void setSpeed(int value) {
 		this.speed = value;
 	}
 
-	public void addSpeed(int value) {
-		speed += value;
-	}
-
+  /**
+   * For getting the value of speed
+   */
 	public int getSpeed() {
 		return speed;
 	}
 
+  /**
+   * For setting whether the vehicle is accelerating or not
+   * @param state the boolean state for whether the vehicle is accelerating
+   */
 	public void setAccelerating(boolean state) {
     this.accelerating = state;
   }
 
+  /**
+   * For determining whether the vehicle is accelerating or not
+   */
   public boolean getAccelerating() {
     return accelerating;
   }
 
+  /**
+   * For updating the values in time
+   * @param clock the clock object
+   * @param value the last known speed value
+   */
 	@Override
 	public void update(Observable clock, Object value) {
     if (getAccelerating()) {

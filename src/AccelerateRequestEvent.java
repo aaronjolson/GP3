@@ -2,7 +2,6 @@ import java.util.EventObject;
 
 /**
  * Represents the accelerate request
- *
  */
 public class AccelerateRequestEvent extends EventObject {
 	/**

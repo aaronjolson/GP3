@@ -19,14 +19,11 @@
  */
 /**
  * Represents the vehicle drive button
- *
  */
 public class DriveButton extends GUIButton {
 	/**
 	 * Crates the button with the required label
-	 * 
-	 * @param string
-	 *            the label
+	 * @param string the label
 	 */
 	public DriveButton(String string) {
 		super(string);
