@@ -25,10 +25,16 @@
 public class ParkState extends VehicleState implements ParkListener, DriveListener, OffRequestListener {
 	private static ParkState instance;
 
-	private ParkState() {
+  /**
+   * Private for the singleton pattern
+   */
+  private ParkState() {
 		instance = this;
 	}
 
+  /**
+   * Removes as a listener from all managers
+   */
 	public void leave() {
     ParkRequestManager.instance().removeParkListener(instance);
     DriveRequestManager.instance().removeDriveListener(instance);
@@ -48,7 +54,7 @@ public class ParkState extends VehicleState implements ParkListener, DriveListen
 	}
 
   /**
-   * Process drive vehicle event
+   * Process drive event
    */
   @Override
   public void drive(DriveEvent event) {
@@ -56,14 +62,16 @@ public class ParkState extends VehicleState implements ParkListener, DriveListen
   }
 
   /**
-   * Process drive vehicle event
+   * Process park event
    */
   @Override
   public void vehicleParked(ParkEvent event) {
     context.changeCurrentState(ParkState.instance());
   }
 
-
+  /**
+   * Process off event
+   */
 	@Override
   public void offRequested(OffRequestEvent event) {
     context.changeCurrentState(OffState.instance());
