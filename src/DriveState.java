@@ -25,10 +25,16 @@
 public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, ParkListener {
 	private static DriveState instance;
 
-	private DriveState() {
+  /**
+   * Private for the singleton pattern
+   */
+  private DriveState() {
 		instance = this;
 	}
 
+  /**
+   * Removes as a listener from all managers
+   */
 	public void leave() {
     AccelerateRequestManager.instance().removeAccelerateRequestListener(instance);
     ParkRequestManager.instance().removeParkListener(instance);
@@ -49,7 +55,6 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 
 	/**
 	 * handle park event
-	 * 
 	 */
 	@Override
 	public void vehicleParked(ParkEvent event) {
@@ -58,14 +63,15 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 
 	/**
 	 * handle accelerate request
-	 * 
 	 */
-
 	@Override
 	public void accelerateRequested(AccelerateRequestEvent event) {
 		context.changeCurrentState(AcceleratingState.instance());
 	}
 
+  /**
+   * handle brake request
+   */
   @Override
   public void brakeRequested(BrakeRequestEvent event) {
     context.changeCurrentState(BrakingState.instance());
@@ -73,7 +79,6 @@ public class DriveState extends VehicleState implements AccelerateRequestListene
 
 	/**
 	 * initialize the state
-	 * 
 	 */
 	public void run() {
     AccelerateRequestManager.instance().addAccelerateRequestListener(instance);

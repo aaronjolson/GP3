@@ -15,7 +15,6 @@ public class BrakingState extends VehicleState
 
   /**
    * Removes as a listener from all managers
-   *
    */
   public void leave() {
     BrakeRequestManager.instance().removeBrakeRequestListener(instance);
