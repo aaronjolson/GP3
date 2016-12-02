@@ -1,16 +1,12 @@
 import java.util.EventListener;
 
 /**
- * Any class may be an OffRequestListener to process accelerate requests
- *
- * @author Aaron Olson
- *
+ * OffRequestListener to process accelerate requests
  */
 public interface OffRequestListener extends EventListener {
   /**
    * Processes off requests
-   *
-   * @param event
+   * @param event the event making the request
    */
   public void offRequested(OffRequestEvent event);
 }
