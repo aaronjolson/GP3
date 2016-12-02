@@ -1,6 +1,5 @@
 /**
  * Represents the braking state.
- *
  */
 public class BrakingState extends VehicleState
     implements BrakeRequestListener, TimerRanOutListener, TimerTickedListener, ParkListener, AccelerateRequestListener {
