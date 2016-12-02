@@ -1,11 +1,10 @@
 /**
- * Created by Aaron on 11/25/16.
+ * GUIButton subclass to handle engaging braking.
  */
 public class BrakeButton extends GUIButton {
     /**
      * The button for braking
-     *
-     * @param string
+     * @param string the label
      */
     public BrakeButton(String string) {
       super(string);
