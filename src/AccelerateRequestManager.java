@@ -42,7 +42,7 @@ public class AccelerateRequestManager {
 	}
 
   /**
-   * For handling the accelerate request events
+   * For processing the accelerate request events
    * @param event the event that made the request
    */
 	public void processEvent(AccelerateRequestEvent event) {
