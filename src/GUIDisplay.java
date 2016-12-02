@@ -139,7 +139,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 		frame.acceleratingStatus.setText("accelerating");
 	}
 
-
   /**
    * Indicate that braking has started
    */
