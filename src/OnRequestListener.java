@@ -1,9 +1,7 @@
 import java.util.EventListener;
 
 /**
- * Any class may be an OnRequestListener to process on requests
- *
- * @author Aaron Olson
+ * OnRequestListener to process on requests
  *
  */
 public interface OnRequestListener extends EventListener {
