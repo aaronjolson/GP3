@@ -66,7 +66,6 @@ public class AcceleratingState extends VehicleState
 	/**
 	 * Initializes the state Adds itself as a listener to managers.
    * Updates the displays.
-	 *
 	 */
 	public void run() {
     AccelerateRequestManager.instance().addAccelerateRequestListener(instance);
