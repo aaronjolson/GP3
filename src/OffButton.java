@@ -1,6 +1,6 @@
 public class OffButton extends GUIButton {
   /**
-   * The button for accelerating
+   * The button for turning the vehicle off
    * @param string the label
    */
   public OffButton(String string) {

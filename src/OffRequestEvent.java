@@ -1,7 +1,7 @@
 import java.util.EventObject;
 
 /**
- * Represents the accelerate request
+ * Represents the off request
  *
  */
 public class OffRequestEvent extends EventObject {
