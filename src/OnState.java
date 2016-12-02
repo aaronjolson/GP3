@@ -15,7 +15,6 @@ public class OnState extends VehicleState
 
   /**
    * Removes as a listener from all managers
-   *
    */
   public void leave() {
     OnRequestManager.instance().removeOnRequestListener(instance);
@@ -56,9 +55,8 @@ public class OnState extends VehicleState
   }
 
   /**
-   * Initializes the state Adds itself as a listener to managers Updates the
-   * displays
-   *
+   * Initializes the state Adds itself as a listener to managers.
+   * Updates the displays
    */
   public void run() {
     OnRequestManager.instance().addOnRequestListener(instance);
