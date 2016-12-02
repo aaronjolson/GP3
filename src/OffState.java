@@ -42,6 +42,9 @@ public class OffState extends VehicleState
     context.changeCurrentState(OffState.instance());
   }
 
+  /**
+   * Process on request
+   */
   public void onRequested(OnRequestEvent event) {
     context.changeCurrentState(OnState.instance());
   }
@@ -54,9 +57,8 @@ public class OffState extends VehicleState
   }
 
   /**
-   * Initializes the state Adds itself as a listener to managers. Updates the
-   * displays
-   *
+   * Initializes the state Adds itself as a listener to managers.
+   * Updates the displays.
    */
   public void run() {
     ParkRequestManager.instance().addParkListener(instance);
