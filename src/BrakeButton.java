@@ -11,8 +11,8 @@ public class BrakeButton extends GUIButton {
     }
 
     /**
-     * Creates a AccelerateRequestEvent, so the interested states can get it. Call the
-     * manager, so it can forward it
+     * Creates an AccelerateRequestEvent, so the interested states can get it.
+     * Call the manager, so it can forward it
      */
     public void inform(VehicleDisplay source) {
       BrakeRequestManager.instance().processEvent(new BrakeRequestEvent(source));
