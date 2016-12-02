@@ -1,16 +1,12 @@
 import java.util.EventListener;
 
 /**
- * Any class may be an BrakeRequestListener to process accelerate requests
- *
- * @author Aaron Olson
- *
+ * BrakeRequestListener to process accelerate requests
  */
 public interface BrakeRequestListener extends EventListener {
   /**
    * Processes brake requests
-   *
-   * @param event
+   * @param event the event that requested
    */
   public void brakeRequested(BrakeRequestEvent event);
 }
