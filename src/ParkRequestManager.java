@@ -1,34 +1,23 @@
-
-/**
- * 
- * @author Brahma Dathan and Sarnath Ramnath
- * @Copyright (c) 2010
- 
- * Redistribution and use with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - the use is for academic purpose only
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   - Neither the name of Brahma Dathan or Sarnath Ramnath
- *     may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * The authors do not make any claims regarding the correctness of the code in this module
- * and are not responsible for any loss or damage resulting from its use.  
- */
 import java.util.EventListener;
-
 import javax.swing.event.EventListenerList;
 
+/**
+ * Class for managing the drive requests and listeners.
+ */
 public class ParkRequestManager {
 	private EventListenerList listenerList = new EventListenerList();
 	private static ParkRequestManager instance;
 
+  /**
+   *  Private constructor to keep the class private
+   */
 	private ParkRequestManager() {
 	}
 
+  /**
+   * for creating as a singleton.
+   * @return the instance
+   */
 	public static ParkRequestManager instance() {
 		if (instance == null) {
 			instance = new ParkRequestManager();
@@ -36,14 +25,26 @@ public class ParkRequestManager {
 		return instance;
 	}
 
+  /**
+   * For adding the listener when states change
+   * @param listener the listener to change
+   */
 	public void addParkListener(ParkListener listener) {
 		listenerList.add(ParkListener.class, listener);
 	}
 
+  /**
+   * For removing the listener when states change
+   * @param listener the listener to change
+   */
 	public void removeParkListener(ParkListener listener) {
 		listenerList.remove(ParkListener.class, listener);
 	}
 
+  /**
+   * For processing the park request events
+   * @param event the event that made the request
+   */
 	public void processEvent(ParkEvent event) {
 		EventListener[] listeners = listenerList.getListeners(ParkListener.class);
 		for (int index = 0; index < listeners.length; index++) {

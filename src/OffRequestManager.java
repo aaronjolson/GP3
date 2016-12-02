@@ -1,6 +1,9 @@
 import java.util.EventListener;
 import javax.swing.event.EventListenerList;
 
+/**
+ * Class for managing the off requests and listeners.
+ */
 public class OffRequestManager {
   private EventListenerList listenerList = new EventListenerList();
   private static OffRequestManager instance;
