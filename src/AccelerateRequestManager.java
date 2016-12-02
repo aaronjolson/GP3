@@ -27,7 +27,7 @@ public class AccelerateRequestManager {
 
   /**
    * For adding the listener when states change
-   * @param listener
+   * @param listener the listener to change
    */
 	public void addAccelerateRequestListener(AccelerateRequestListener listener) {
 		listenerList.add(AccelerateRequestListener.class, listener);
@@ -35,7 +35,7 @@ public class AccelerateRequestManager {
 
   /**
    * For removing the listener when states change
-   * @param listener
+   * @param listener the listener to change
    */
 	public void removeAccelerateRequestListener(AccelerateRequestListener listener) {
 		listenerList.remove(AccelerateRequestListener.class, listener);
@@ -43,7 +43,7 @@ public class AccelerateRequestManager {
 
   /**
    * For handling the accelerate request events
-   * @param event
+   * @param event the event that made the request
    */
 	public void processEvent(AccelerateRequestEvent event) {
 		EventListener[] listeners = listenerList.getListeners(AccelerateRequestListener.class);

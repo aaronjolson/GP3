@@ -20,6 +20,9 @@
  */
 import java.util.EventListener;
 
+/**
+ * represents the drive listener
+ */
 public interface DriveListener extends EventListener {
 	public void drive(DriveEvent event);
 }
