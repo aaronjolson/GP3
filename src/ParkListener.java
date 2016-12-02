@@ -5,7 +5,7 @@ import java.util.EventListener;
  */
 public interface ParkListener extends EventListener {
   /**
-   * Processes on requests
+   * Processes park requests
    *
    * @param event whatever we get
    */
