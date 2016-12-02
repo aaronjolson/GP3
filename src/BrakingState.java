@@ -24,7 +24,7 @@ public class BrakingState extends VehicleState
   }
 
   /**
-   * For singleton
+   * For creating instance as singleton
    *
    * @return the object
    */
@@ -42,13 +42,16 @@ public class BrakingState extends VehicleState
     display.displaySpeed(Timer.instance().getSpeed());
   }
 
+  /**
+   * Process acceleration request
+   */
   @Override
   public void accelerateRequested(AccelerateRequestEvent event) {
     context.changeCurrentState(AcceleratingState.instance());
   }
 
   /**
-   * Process park vehicle request
+   * Process park request
    */
   public void vehicleParked(ParkEvent event) {
     if (Timer.instance().getSpeed() == 0) {
