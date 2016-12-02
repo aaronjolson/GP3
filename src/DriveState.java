@@ -1,5 +1,5 @@
 /**
- * Represents the vehicle in drive state
+ * Represents the drive state
  */
 public class DriveState extends VehicleState implements AccelerateRequestListener, BrakeRequestListener, ParkListener {
 	private static DriveState instance;
