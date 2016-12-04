@@ -20,7 +20,16 @@
  */
 import java.util.EventObject;
 
+/**
+ * Represents the timerRanOut request
+ */
 public class TimerTickedEvent extends EventObject {
+  /**
+   * Constructor simply calls the super class's constructor with the supplied
+   * source
+   *
+   * @param source whatever we get
+   */
 	public TimerTickedEvent(Object source) {
 		super(source);
 	}
