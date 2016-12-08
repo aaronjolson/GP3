@@ -95,7 +95,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is on
 	 */
 	public void turnVehicleOn() {
-    System.out.println("turning vehicle on");
 		frame.vehicleStatus.setText("Vehicle On");
 	}
 
@@ -103,7 +102,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is off
 	 */
 	public void turnVehicleOff() {
-    System.out.println("turning vehicle off");
 		frame.vehicleStatus.setText("Vehicle Off");
 	}
 
@@ -111,7 +109,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is in drive
 	 */
 	public void driveVehicle() {
-    System.out.println("gear in drive");
 		frame.gearStatus.setText("Gear in Drive");
 	}
 
@@ -119,7 +116,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that the vehicle is in parked
 	 */
 	public void vehicleParked() {
-    System.out.println("gear in park");
 		frame.gearStatus.setText("Gear in Park");
 	}
 
@@ -135,7 +131,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
 	 * Indicate that accelerating has started
 	 */
 	public void startAccelerating() {
-    System.out.println("vehicle accelerating");
 		frame.acceleratingStatus.setText("accelerating");
 	}
 
@@ -143,7 +138,6 @@ public class GUIDisplay extends VehicleDisplay implements ActionListener {
    * Indicate that braking has started
    */
   public void startBraking() {
-    System.out.println("vehicle braking");
     frame.acceleratingStatus.setText("braking");
   }
 
