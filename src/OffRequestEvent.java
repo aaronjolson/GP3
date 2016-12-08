@@ -2,7 +2,6 @@ import java.util.EventObject;
 
 /**
  * Represents the off request
- *
  */
 public class OffRequestEvent extends EventObject {
   /**

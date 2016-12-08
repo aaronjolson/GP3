@@ -28,8 +28,7 @@ public abstract class GUIButton extends JButton {
 	/**
 	 * Create the button with the proper text
 	 * 
-	 * @param string
-	 *            the text
+	 * @param string the text
 	 */
 	public GUIButton(String string) {
 		super(string);

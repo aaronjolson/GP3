@@ -1,6 +1,5 @@
 /**
  * Represents the off state.
- *
  */
 public class OffState extends VehicleState
     implements OffRequestListener, OnRequestListener, ParkListener {

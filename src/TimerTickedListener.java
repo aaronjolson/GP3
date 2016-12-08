@@ -20,6 +20,14 @@
  */
 import java.util.EventListener;
 
+/**
+ * TimerTickedListener to process timerTicked requests
+ */
 public interface TimerTickedListener extends EventListener {
+  /**
+   * Processes timeTicked requests
+   *
+   * @param event whatever we get
+   */
 	public void timerTicked(TimerTickedEvent event);
 }

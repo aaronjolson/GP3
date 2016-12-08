@@ -22,13 +22,23 @@ import java.util.EventListener;
 
 import javax.swing.event.EventListenerList;
 
+/**
+ * Class for managing the timer ran out requests and listeners.
+ */
 public class TimerRanOutManager {
 	private EventListenerList listenerList = new EventListenerList();
 	private static TimerRanOutManager instance;
 
+  /**
+   *  Private constructor to keep the class private
+   */
 	private TimerRanOutManager() {
 	}
 
+  /**
+   * for creating as a singleton.
+   * @return the instance
+   */
 	public static TimerRanOutManager instance() {
 		if (instance == null) {
 			instance = new TimerRanOutManager();
@@ -36,14 +46,26 @@ public class TimerRanOutManager {
 		return instance;
 	}
 
+  /**
+   * For adding the listener when states change
+   * @param listener the listener to change
+   */
 	public void addTimerRanOutListener(TimerRanOutListener listener) {
 		listenerList.add(TimerRanOutListener.class, listener);
 	}
 
+  /**
+   * For removing the listener when states change
+   * @param listener the listener to change
+   */
 	public void removeTimerRanOutListener(TimerRanOutListener listener) {
 		listenerList.remove(TimerRanOutListener.class, listener);
 	}
 
+  /**
+   * For processing the request events
+   * @param event the event that made the request
+   */
 	public void processEvent(TimerRanOutEvent event) {
 		EventListener[] listeners = listenerList.getListeners(TimerRanOutListener.class);
 		for (int index = 0; index < listeners.length; index++) {

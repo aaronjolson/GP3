@@ -20,7 +20,6 @@
 
 /**
  * Represents the parked state
- *
  */
 public class ParkState extends VehicleState implements ParkListener, DriveListener, OffRequestListener {
 	private static ParkState instance;

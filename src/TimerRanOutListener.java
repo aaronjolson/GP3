@@ -20,6 +20,14 @@
  */
 import java.util.EventListener;
 
+/**
+ * ParkListener to process park requests
+ */
 public interface TimerRanOutListener extends EventListener {
+  /**
+   * Processes timer ran out requests
+   *
+   * @param event whatever we get
+   */
 	public void timerRanOut(TimerRanOutEvent event);
 }

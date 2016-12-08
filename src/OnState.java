@@ -1,6 +1,5 @@
 /**
  * Represents the on state.
- *
  */
 public class OnState extends VehicleState
     implements OnRequestListener, OffRequestListener, DriveListener {
